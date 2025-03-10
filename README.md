@@ -16,7 +16,7 @@ Tools Used: SQL
 
 ## 📑 Table of Contents  
 1. [📌 Background & Overview](#-background--overview)  
-2. [📂 Dataset Description & Data Structure](#-dataset-description--data-structure)  
+2. [📂 Dataset Description](#-dataset-description)  
 3. [🔎 Final Conclusion & Recommendations](#-final-conclusion--recommendations)
 
 ---
@@ -25,60 +25,28 @@ Tools Used: SQL
 
 ### Objective:
 ### 📖 What is this project about? What Business Question will it solve?
-This project uses SQL to query website traffic, transactions, bounce rate, and revenue to:
-✔️ Identify the behavior of customers
-✔️ Enhance user experience
-✔️ Improve conversion rate
+This project uses SQL to query website traffic, transactions, bounce rate, and revenue to:   
+✔️ Identify the behavior of customers  
+✔️ Enhance user experience  
+✔️ Improve conversion rate  
   
 ### 👤 Who is this project for?  
-
-Mention who might benefit from this project 
-
- _Example:_
-
-✔️ Data analysts & business analysts  
-✔️ Decision-makers & stakeholders  
+✔️ Data Analysts & Business Analysts  
+✔️ Decision-makers & Stakeholders  
 
 
 
 ---
 
-## 📂 Dataset Description & Data Structure  
+## 📂 Dataset Description 
 
 ### 📌 Data Source  
-- Source: (Mention where the dataset is obtained from—Kaggle, company database, government sources, etc.)  
-- Size: (Mention the number of rows & columns)  
-- Format: (.csv, .sql, .xlsx, etc.)  
-
-### 📊 Data Structure & Relationships  
-
-#### 1️⃣ Tables Used:  
-Mention how many tables are in the dataset.  
-
-#### 2️⃣ Table Schema & Data Snapshot  
-
-Table 1: Products Table  
-
-👉🏻 Insert a screenshot of table schema 
-
-📌If the table is too big, only capture a part of it that contains key metrics you used in the projects or put the table in toggle
-
- _Example:_
-
-| Column Name | Data Type | Description |  
-|-------------|----------|-------------|  
-| Product_ID  | INT      | Unique identifier for each product |  
-| Name        | TEXT     | Product name |  
-| Category    | TEXT     | Product category |  
-| Price       | FLOAT    | Price per unit |  
+- Source: Google Analytics Public Dataset
+  
+### 📌 Data Dictionary
+![Sql 1](https://github.com/user-attachments/assets/5eaf6db7-04df-4443-9397-5671c93dfd55)
 
 
-Table 2: Sales Transactions  
-
-👉🏻 Insert a screenshot of table schema.
-
-
----
 
 ## ⚒️ Main Process
 
