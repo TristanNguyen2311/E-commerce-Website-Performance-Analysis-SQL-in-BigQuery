@@ -25,10 +25,11 @@ Tools Used: SQL
 
 ### Objective:
 ### 📖 What is this project about? What Business Question will it solve?
-This project uses SQL to query website traffic, transactions, bounce rate, and revenue to:   
+This project uses SQL to query traffic and engagement, revenue, product performanceto:   
 ✔️ Identify the behavior of customers  
 ✔️ Enhance user experience  
 ✔️ Improve conversion rate  
+✔️ Optimize marketing strategies
   
 ### 👤 Who is this project for?  
 ✔️ Data Analysts & Business Analysts  
