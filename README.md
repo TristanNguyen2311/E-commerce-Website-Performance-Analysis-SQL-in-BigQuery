@@ -1,4 +1,4 @@
-# E-commerce-Behavioral-Insights-Performance-Analysis-SQL-in-BigQuery-
+
 
 
 
@@ -7,10 +7,10 @@
 
 👉🏻Change Icon emoji 🔥🔍📘🚩 to your likings by clicking "Start" + "."
 
-# 📊 Project Title: [Your Project Name]  
-Author: Nguyễn Văn Trí
-Date: YYYY-MM-DD  
-Tools Used: SQL/ Python  
+# 📊 Project Title: E-commerce Behavioral & Performance Analysis (SQL in BigQuery)
+Author: Nguyễn Văn Trí   
+Date: 2024-10-14   
+Tools Used: SQL  
 
 ---
 
@@ -25,21 +25,11 @@ Tools Used: SQL/ Python
 
 ### Objective:
 ### 📖 What is this project about? What Business Question will it solve?
-
-Clearly outline what this project does, what business questions the project will solve. 
-
-- Provide a brief introduction - Write in bullet point format
-- Point out the main business question
-
-
- _Example:_
-  This project uses Python to analyze transaction data from KPMG to:
-
-✔️ Identify the behavior in customer's first transaction.  
-✔️ Provide actionable insights to increase retention rate   
- 
-
-
+This project uses SQL to query website traffic, transactions, bounce rate, and revenue to:
+✔️ Identify the behavior of customers
+✔️ Enhance user experience
+✔️ Improve conversion rate
+  
 ### 👤 Who is this project for?  
 
 Mention who might benefit from this project 
