@@ -3,14 +3,14 @@
 
 
 ---
-
+![96-967411_ecommerce-png-ecommerce-website-vector-png-clipart](https://github.com/user-attachments/assets/5441bb3d-3cba-4e6d-a6e9-23a00f56e7ae)
 
 👉🏻Change Icon emoji 🔥🔍📘🚩 to your likings by clicking "Start" + "."
 
 # 📊 Project Title: [Your Project Name]  
-Author: [Your Name]  
+Author: Nguyễn Văn Trí
 Date: YYYY-MM-DD  
-Tools Used: SQL 
+Tools Used: SQL/ Python  
 
 ---
 
