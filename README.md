@@ -25,10 +25,10 @@ Tools Used: SQL
 
 ### Objective:
 ### 📖 What is this project about? What Business Question will it solve?
-This project uses SQL to query traffic and engagement, revenue, product performanceto:   
-✔️ Identify the behavior of customers  
+This project uses SQL to query and analyze user interactions, shopping patterns, and product performance to:   
+✔️ Identify customer behavior 
 ✔️ Enhance user experience  
-✔️ Improve conversion rate  
+✔️ Improve conversion rates  
 ✔️ Optimize marketing strategies
   
 ### 👤 Who is this project for?  
