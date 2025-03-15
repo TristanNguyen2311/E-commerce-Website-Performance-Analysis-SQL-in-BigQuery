@@ -5,7 +5,7 @@
 ---
 ![96-967411_ecommerce-png-ecommerce-website-vector-png-clipart](https://github.com/user-attachments/assets/5441bb3d-3cba-4e6d-a6e9-23a00f56e7ae)
 
-👉🏻Change Icon emoji 🔥🔍📘🚩 to your likings by clicking "Start" + "."
+
 
 # 📊 Project Title: E-commerce Behavioral & Performance Analysis (SQL in BigQuery)
 Author: Nguyễn Văn Trí   
@@ -26,7 +26,7 @@ Tools Used: SQL
 ### Objective:
 ### 📖 What is this project about? What Business Question will it solve?
 This project uses SQL to query and analyze user interactions, shopping patterns, and product performance to:   
-✔️ Identify customer behavior 
+✔️ Identify customer behavior  
 ✔️ Enhance user experience  
 ✔️ Improve conversion rates  
 ✔️ Optimize marketing strategies
@@ -51,17 +51,12 @@ This project uses SQL to query and analyze user interactions, shopping patterns,
 
 ## ⚒️ Main Process
 
-1️⃣ Data Cleaning & Preprocessing  
-2️⃣ Exploratory Data Analysis (EDA)  
-3️⃣ SQL/ Python Analysis 
+<details>
+  <summary> 1. Traffic & Engagement Analysis</summary>
+  Measured total visits, page views, and transactions in Q1 2017 to identify key traffic trends and seasonal patterns
 
-- First, explain codes' purpose - what they do
 
-- Then how your query/ code & Insert screenshots of your result
-
-- Finally, explain your observations/ findings from the results  ts findings
-  
- _Describe trends, key metrics, and patterns._  
+</details>
 
 ---
 
