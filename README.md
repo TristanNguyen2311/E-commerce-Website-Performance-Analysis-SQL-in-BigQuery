@@ -56,20 +56,19 @@ This project uses SQL to query and analyze user interactions, shopping patterns,
 Measured total visits, page views, and transactions in Q1 2017 to identify key traffic trends and seasonal patterns.
 
 ```sql
---q1 calculate total visit, pageview, transaction for Jan, Feb and March 2017 (order by month)
-select
-  format_date("%Y%m", parse_date("%Y%m%d", date)) as month,
-  sum(totals.visits) as visits,
-  sum(totals.pageviews) as pageviews,
-  sum(totals.transactions) as transactions,
-from `bigquery-public-data.google_analytics_sample.ga_sessions_2017*`
-where _TABLE_SUFFIX between '0101' and '0331'
-group by 1
-order by 1;
+-- Calculate total visit, pageview, transaction for Jan, Feb, and March 2017 (order by month)
+SELECT 
+   format_date("%Y%m", parse_date("%Y%m%d", date)) as month
+  ,SUM(totals.visits) as visits
+  ,SUM(totals.pageviews) as pageviews
+  ,SUM(totals.transactions) as transactions
+FROM `bigquery-public-data.google_analytics_sample.ga_sessions_2017*`
+WHERE _table_suffix BETWEEN "0101" AND '0331'
+GROUP BY 1
+ORDER BY 1
 ```
 
 Query Result:
-
 | Month  | Visits | Pageviews | Transactions |
 |--------|--------|-----------|--------------|
 | 201701 | 64,694 | 257,708   | 713          |
@@ -81,18 +80,18 @@ Query Result:
 
 <details>
   <summary> 2. Marketing Effectiveness</summary>
-Evaluated bounce rates across traffic sources in July 2017 to pinpoint ineffective channels and optimize landing pages.
+Evaluated bounce rates per traffic sources in July 2017 to pinpoint ineffective channels and optimize landing pages.
 
 ```sql
---q2 Bounce rate per traffic source in July 2017 (Bounce_rate = num_bounce/total_visit) (order by total_visit DESC)
-select
-    trafficSource.source as source,
-    sum(totals.visits) as total_visits,
-    sum(totals.Bounces) as total_no_of_bounces,
-    (sum(totals.Bounces)/sum(totals.visits))* 100.00 as bounce_rate
-from `bigquery-public-data.google_analytics_sample.ga_sessions_201707*`
-group by source
-order by total_visits DESC;
+-- Bounce rate per traffic source in July 2017 (Bounce_rate = num_bounce/total_visit) (order by total_visit DESC)
+SELECT   
+  trafficSource.source
+  ,SUM(totals.visits) as totals_visits
+  ,SUM(totals.bounces) as total_no_of_bounces
+  ,ROUND(100*SUM(totals.bounces)/SUM(totals.visits),2) as bounce_rate
+FROM `bigquery-public-data.google_analytics_sample.ga_sessions_201707*` 
+GROUP BY trafficSource.source
+ORDER BY  trafficSource.source
 ```
 
 Query Result:
@@ -117,43 +116,44 @@ Query Result:
 
 <details>
   <summary> 3. Revenue Breakdown</summary>
- Analyzed revenue by traffic source on a weekly and monthly basis in June 2017 to assess the best-performing acquisition channels.
+ Analyzed revenue by traffic source weekly and monthly in June 2017 to assess the best-performing acquisition channels.
 
 ```sql
---q3 Revenue by traffic source by week, by month in June 2017
-with 
-month_data as(
-  select
-    "Month" as time_type,
-    format_date("%Y%m", parse_date("%Y%m%d", date)) as month,
-    trafficSource.source as source,
-    sum(p.productRevenue)/1000000 as revenue
-  from `bigquery-public-data.google_analytics_sample.ga_sessions_201706*`,
-    unnest(hits) hits,
-    unnest(product) p
-  where p.productRevenue is not null
-  group by 1,2,3
-  order by revenue DESC
-),
-
-week_data as(
-  select
-    "Week" as time_type,
-    format_date("%Y%W", parse_date("%Y%m%d", date)) as week,
-    trafficSource.source as source,
-    sum(p.productRevenue)/1000000 as revenue
-  from `bigquery-public-data.google_analytics_sample.ga_sessions_201706*`,
-    unnest(hits) hits,
-    unnest(product) p
-  where p.productRevenue is not null
-  group by 1,2,3
-  order by revenue DESC
+-- Revenue by traffic source by week, by month in June 2017
+WITH week_revenue as(
+  SELECT 
+    'Week'as time_type
+    ,FORMAT_DATE('%Y%W',PARSE_DATE('%Y%m%d', date)) as time
+    ,trafficSource.source 
+    ,SUM(productRevenue)/1000000.0 as revenue
+  FROM `bigquery-public-data.google_analytics_sample.ga_sessions_201706*`,
+  UNNEST (hits) hits,
+  UNNEST (hits.product) product
+  WHERE productRevenue is not null
+  GROUP BY time, trafficSource.source
+  ORDER BY time, trafficSource.source
 )
 
-select * from month_data
-union all
-select * from week_data;
-order by time_type
+,month_revenue as(
+  SELECT 
+    'Month'as time_type
+    ,FORMAT_DATE('%Y%m',PARSE_DATE('%Y%m%d', date)) as time
+    ,trafficSource.source
+    ,SUM(productRevenue)/1000000.0 as revenue
+  FROM `bigquery-public-data.google_analytics_sample.ga_sessions_201706*`,
+  UNNEST (hits) hits,
+  UNNEST (hits.product) product
+  WHERE productRevenue is not null
+  GROUP BY time, trafficSource.source
+  ORDER BY time, trafficSource.source
+)
+
+SELECT *
+FROM week_revenue
+UNION ALL
+SELECT *
+FROM month_revenue
+ORDER BY source, revenue
 ```
 
 Query Result:
@@ -180,40 +180,42 @@ Query Result:
 Compared the browsing patterns of purchasers vs. non-purchasers in June & July 2017 to identify key engagement drivers.
   
 ```sql
---q4 Average number of pageviews by purchaser type (purchasers vs non-purchasers) in June, July 2017.
-with 
-purchaser_data as(
-  select
-      format_date("%Y%m",parse_date("%Y%m%d",date)) as month,
-      (sum(totals.pageviews)/count(distinct fullvisitorid)) as avg_pageviews_purchase,
-  from `bigquery-public-data.google_analytics_sample.ga_sessions_2017*`
-    ,unnest(hits) hits
-    ,unnest(product) product
-  where _table_suffix between '0601' and '0731'
-  and totals.transactions>=1
-  and product.productRevenue is not null
-  group by month
-),
-
-non_purchaser_data as(
-  select
-      format_date("%Y%m",parse_date("%Y%m%d",date)) as month,
-      sum(totals.pageviews)/count(distinct fullvisitorid) as avg_pageviews_non_purchase,
-  from `bigquery-public-data.google_analytics_sample.ga_sessions_2017*`
-      ,unnest(hits) hits
-    ,unnest(product) product
-  where _table_suffix between '0601' and '0731'
-  and totals.transactions is null
-  and product.productRevenue is null
-  group by month
+-- Average number of pageviews by purchaser type (purchasers vs non-purchasers) in June, July 2017.
+WITH avg_pageview_purchaser as(
+  SELECT  
+    FORMAT_DATE('%Y%m',PARSE_DATE('%Y%m%d', date)) as month
+    ,ROUND(SUM(totals.pageviews)/COUNT(DISTINCT fullVisitorId),2) as avg_pageviews_purchase
+  FROM `bigquery-public-data.google_analytics_sample.ga_sessions_2017*`,
+  UNNEST (hits) hits,
+  UNNEST (hits.product) product
+  WHERE _table_suffix BETWEEN "0601" AND '0731'
+    AND totals.transactions >=1
+    AND productRevenue is not null
+  GROUP BY month
+  ORDER BY month
 )
 
-select
-    pd.*,
-    avg_pageviews_non_purchase
-from purchaser_data pd
-full join non_purchaser_data using(month)
-order by pd.month;
+,avg_pageviews_non_purchaser as(
+  SELECT  
+    FORMAT_DATE('%Y%m',PARSE_DATE('%Y%m%d', date)) as month
+    ,ROUND(SUM(totals.pageviews)/COUNT(DISTINCT fullVisitorId),2) as avg_pageviews_non_purchase
+  FROM `bigquery-public-data.google_analytics_sample.ga_sessions_2017*`,
+  UNNEST (hits) hits,
+  UNNEST (hits.product) product
+  WHERE _table_suffix BETWEEN "0601" AND '0731'
+    AND totals.transactions is null
+    AND productRevenue is null
+  GROUP BY month
+  ORDER BY month
+)
+
+SELECT 
+  pur.month
+  ,pur.avg_pageviews_purchase
+  ,non_pur.avg_pageviews_non_purchase
+FROM  avg_pageview_purchaser as pur
+FULL JOIN avg_pageviews_non_purchaser as non_pur
+ON pur.month = non_pur.month
 ```
 
 Query Result:
