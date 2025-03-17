@@ -231,8 +231,8 @@ Query Result:
 
 
 <details>
-  <summary> 5. Traffic & Engagement Analysis</summary>
-Measured transaction frequency per user and average spending per session in July 2017 to gauge purchase consistency and spending habits.
+  <summary> 5. Customer Loyalty & Spending Patterns Analysis</summary>
+Measured transaction frequency per user  in July 2017 to gauge purchase consistency and spending habits.
   
 ```sql
 -- Average number of transactions per user that made a purchase in July 2017
@@ -253,48 +253,108 @@ Query Result:
 |--------|--------------------------------:|
 | 201707 | 4.16                            |
 
-</details>
-
-
-<details>
-  <summary>6. Product Affinity & Cross-Selling</summary>
-  Measured total visits, page views, and transactions in Q1 2017 to identify key traffic trends and seasonal patterns
 
 ```sql
 -- Average amount of money spent per session. Only include purchaser data in July 2017
 SELECT 
   FORMAT_DATE('%Y%m',PARSE_DATE('%Y%m%d', date)) as month
-  ,ROUND(SUM(totals.transactions)/COUNT(DISTINCT fullVisitorId),2) as Avg_total_transactions_per_user
+  ,ROUND(SUM(productRevenue)/(SUM(totals.visits)*1000000),2) as avg_spend_per_session
 FROM `bigquery-public-data.google_analytics_sample.ga_sessions_201707*`,
 UNNEST (hits) hits,
 UNNEST (hits.product) product
 WHERE totals.transactions >=1
   AND productRevenue is not null
 GROUP BY month
-ORDER BY month
 ```
 Query Result:
 
-| Month  | Visits | Pageviews | Transactions |
-|--------|--------|-----------|--------------|
-| 201701 | 64,694 | 257,708   | 713          |
-| 201702 | 62,192 | 233,373   | 733          |
-| 201703 | 69,931 | 259,522   | 993          |
+| Month  | Avg Revenue Per Visit (USD) |
+|--------|----------------------------:|
+| 201707 | 43.86                       |
+
 
 </details>
 
 
 <details>
-  <summary> 5. Traffic & Engagement Analysis</summary>
-  Measured total visits, page views, and transactions in Q1 2017 to identify key traffic trends and seasonal patterns
+  <summary>6. Product Affinity & Cross-Selling</summary>
+Identified frequently co-purchased products with YouTube Men's Vintage Henley to uncover bundling and recommendation opportunities.
+  
+```sql
+-- Other products purchased by customers who purchased product "YouTube Men's Vintage Henley" in July 2017.
+WITH buyer_list as(
+    SELECT
+        DISTINCT fullVisitorId  
+    FROM `bigquery-public-data.google_analytics_sample.ga_sessions_201707*`
+    , UNNEST(hits) as hits
+    , UNNEST(hits.product) as product
+    WHERE product.v2ProductName = "YouTube Men's Vintage Henley"
+    AND totals.transactions>=1
+    AND product.productRevenue is not null
+)
 
+SELECT
+  product.v2ProductName as other_purchased_products,
+  SUM(product.productQuantity) as quantity
+FROM `bigquery-public-data.google_analytics_sample.ga_sessions_201707*`
+, UNNEST(hits) as hits
+, UNNEST(hits.product) as product
+INNER JOIN buyer_list USING(fullVisitorId)
+WHERE product.v2ProductName != "YouTube Men's Vintage Henley"
+ AND product.productRevenue is not null
+GROUP BY other_purchased_products
+ORDER BY quantity DESC
+```
 Query Result:
 
-| Month  | Visits | Pageviews | Transactions |
-|--------|--------|-----------|--------------|
-| 201701 | 64,694 | 257,708   | 713          |
-| 201702 | 62,192 | 233,373   | 733          |
-| 201703 | 69,931 | 259,522   | 993          |
+| Product Name                                      | Quantity |
+|--------------------------------------------------|---------:|
+| Google Sunglasses                                | 20       |
+| Google Women's Vintage Hero Tee Black           | 7        |
+| SPF-15 Slim & Slender Lip Balm                  | 6        |
+| Google Women's Short Sleeve Hero Tee Red Heather | 4        |
+| YouTube Men's Fleece Hoodie Black               | 3        |
+| Google Men's Short Sleeve Badge Tee Charcoal    | 3        |
+
+
+</details>
+
+
+<details>
+  <summary> 7. Conversion Funnel Optimization</summary>
+Built a cohort analysis to track product view-to-purchase conversion rates in Q1 2017, revealing key drop-off points in the buying journey.
+
+```sql
+-- Calculate cohort map from product view to addtocart to purchase in Jan, Feb and March 2017. 
+WITH product_data as(
+SELECT
+  format_date('%Y%m', parse_date('%Y%m%d',date)) as month
+  ,count(CASE WHEN eCommerceAction.action_type = '2' THEN product.v2ProductName END) as num_product_view
+  ,count(CASE WHEN eCommerceAction.action_type = '3' THEN product.v2ProductName END) as num_add_to_cart
+  ,count(CASE WHEN eCommerceAction.action_type = '6' and product.productRevenue is not null THEN product.v2ProductName END) as num_purchase
+FROM `bigquery-public-data.google_analytics_sample.ga_sessions_*`
+,UNNEST(hits) as hits
+,UNNEST (hits.product) as product
+WHERE _table_suffix BETWEEN '20170101' AND '20170331'
+  AND eCommerceAction.action_type in ('2','3','6')
+GROUP BY month
+ORDER BY  month
+)
+
+SELECT
+    *,
+    ROUND(num_add_to_cart/num_product_view * 100, 2) as add_to_cart_rate,
+    ROUND(num_purchase/num_product_view * 100, 2) as purchase_rate
+FROM product_data
+```
+Query Result:
+
+| Month  | Product Views | Add to Cart | Purchases | Add-to-Cart Rate (%) | Purchase Rate (%) |
+|--------|--------------|-------------|-----------|----------------------|------------------:|
+| 201701 | 25,787       | 7,342       | 2,143     | 28.47                | 8.31             |
+| 201702 | 21,489       | 7,360       | 2,060     | 34.25                | 9.59             |
+| 201703 | 23,549       | 8,782       | 2,977     | 37.29                | 12.64            |
+
 
 </details>
 
