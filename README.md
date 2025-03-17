@@ -323,7 +323,6 @@ Query Result:
 | 201703 | 69,931 | 259,522   | 993          |
 
 </details>
----
 
 ## 🔎 Final Conclusion & Recommendations  
 
