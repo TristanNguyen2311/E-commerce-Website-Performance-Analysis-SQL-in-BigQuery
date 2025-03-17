@@ -172,12 +172,13 @@ Query Result:
 | Week      | 201722 | google   | 2,119.39   |
 | Week      | 201723 | google   | 1,083.95   |
 | Week      | 201725 | google   | 1,006.10   |
+
 </details>
 
 
 <details>
   <summary> 4. Traffic & Engagement Analysis</summary>
-Compared the browsing patterns of purchasers vs. non-purchasers in June & July 2017 to identify key engagement drivers.
+Compared the browsing patterns of purchasers and non-purchasers in June & July 2017 to identify key engagement drivers.
   
 ```sql
 -- Average number of pageviews by purchaser type (purchasers vs non-purchasers) in June, July 2017.
@@ -234,65 +235,23 @@ Query Result:
 Measured transaction frequency per user and average spending per session in July 2017 to gauge purchase consistency and spending habits.
   
 ```sql
---q5 Average number of transactions per user that made a purchase in July 2017
-select
-    format_date("%Y%m",parse_date("%Y%m%d",date)) as month,
-    sum(totals.transactions)/count(distinct fullvisitorid) as Avg_total_transactions_per_user
-from `bigquery-public-data.google_analytics_sample.ga_sessions_201707*`
-    ,unnest (hits) hits,
-    unnest(product) product
-where  totals.transactions>=1
-and product.productRevenue is not null
-group by month;
+-- Average number of transactions per user that made a purchase in July 2017
+SELECT 
+  FORMAT_DATE('%Y%m',PARSE_DATE('%Y%m%d', date)) as month
+  ,ROUND(SUM(totals.transactions)/COUNT(DISTINCT fullVisitorId),2) as Avg_total_transactions_per_user
+FROM `bigquery-public-data.google_analytics_sample.ga_sessions_201707*`,
+UNNEST (hits) hits,
+UNNEST (hits.product) product
+WHERE totals.transactions >=1
+  AND productRevenue is not null
+GROUP BY month
+ORDER BY month
 ```
 Query Result:
 
 | Month  | Avg Total Transactions per User |
 |--------|--------------------------------:|
 | 201707 | 4.16                            |
-
-```sql
---q6 Average amount of money spent per session. Only include purchaser data in July 2017
-with Raw_data as(
-  select
-    FORMAT_DATE('%Y%m',PARSE_DATE('%Y%m%d',date)) as month
-    ,totals.visits as visits
-    ,product.productRevenue as Revenue
-  from `bigquery-public-data.google_analytics_sample.ga_sessions_201707*` 
-    ,unnest(hits) as hits
-    ,unnest(hits.product) as product
-  where totals.transactions is not null and product.productRevenue is not null
-)
-
-,Avg_per_visit as(
-select 
-  month
-  ,sum(Revenue) as total_revenue
-  ,sum(visits) as total_visit
-  ,ROUND((sum(Revenue)/1000000)/sum(visits),2) as avg_revenue_by_user_per_visit
-from Raw_data
-group by month
-)
-
-select month, avg_revenue_by_user_per_visit
-from Avg_per_visit;
-
-select
-    format_date("%Y%m",parse_date("%Y%m%d",date)) as month,
-    ((sum(product.productRevenue)/sum(totals.visits))/power(10,6)) as avg_revenue_by_user_per_visit
-from `bigquery-public-data.google_analytics_sample.ga_sessions_201707*`
-  ,unnest(hits) hits
-  ,unnest(product) product
-where product.productRevenue is not null
-and totals.transactions>=1
-group by month;
-```
-
-Query Result:
-
-| Month  | Avg Revenue Per Visit (USD) |
-|--------|----------------------------:|
-| 201707 | 43.86                       |
 
 </details>
 
@@ -301,6 +260,19 @@ Query Result:
   <summary>6. Product Affinity & Cross-Selling</summary>
   Measured total visits, page views, and transactions in Q1 2017 to identify key traffic trends and seasonal patterns
 
+```sql
+-- Average amount of money spent per session. Only include purchaser data in July 2017
+SELECT 
+  FORMAT_DATE('%Y%m',PARSE_DATE('%Y%m%d', date)) as month
+  ,ROUND(SUM(totals.transactions)/COUNT(DISTINCT fullVisitorId),2) as Avg_total_transactions_per_user
+FROM `bigquery-public-data.google_analytics_sample.ga_sessions_201707*`,
+UNNEST (hits) hits,
+UNNEST (hits.product) product
+WHERE totals.transactions >=1
+  AND productRevenue is not null
+GROUP BY month
+ORDER BY month
+```
 Query Result:
 
 | Month  | Visits | Pageviews | Transactions |
