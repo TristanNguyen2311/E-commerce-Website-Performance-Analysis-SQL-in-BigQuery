@@ -158,20 +158,20 @@ ORDER BY source, revenue
 
 Query Result:
 
-| Time Type | Time   | Source  | Revenue ($) |
-|-----------|--------|---------|-------------|
-| Month     | 201706 | (direct) | 97,333.62  |
-| Week      | 201724 | (direct) | 30,908.91  |
-| Week      | 201725 | (direct) | 27,295.32  |
-| Month     | 201706 | google   | 18,757.18  |
-| Week      | 201723 | (direct) | 17,325.68  |
-| Week      | 201726 | (direct) | 14,914.81  |
-| Week      | 201724 | google   | 9,217.17   |
-| Week      | 201722 | (direct) | 6,888.90   |
-| Week      | 201726 | google   | 5,330.57   |
-| Week      | 201722 | google   | 2,119.39   |
-| Week      | 201723 | google   | 1,083.95   |
-| Week      | 201725 | google   | 1,006.10   |
+| Time Type| Time | Source             | Revenue ($) |
+| ------ | ------ | ------------------ | ----------- |
+| Week   | 201722 | (direct)           | 6888.90     |
+| Week   | 201726 | (direct)           | 14914.81    |
+| Week   | 201723 | (direct)           | 17325.68    |
+| Week   | 201725 | (direct)           | 27295.32    |
+| Week   | 201724 | (direct)           | 30908.91    |
+| Month  | 201706 | (direct)           | 97333.62    |
+| Month  | 201706 | bing               | 13.98       |
+| Week   | 201724 | bing               | 13.98       |
+| Month  | 201706 | chat.google.com    | 74.03       |
+| Week   | 201723 | chat.google.com    | 74.03       |
+| Week   | 201724 | dealspotr.com      | 72.95       |
+| Month  | 201706 | dealspotr.com      | 72.95       |
 
 </details>
 
@@ -363,6 +363,6 @@ Query Result:
 👉🏻 Based on the insights and findings above, we would recommend the [stakeholder team] to consider the following:  
 
 📌 Key Takeaways:  
-✔️ Recommendation 1  
+✔️ Improve landing pages for YouTube, Facebook and Google traffic with surveys to reduce bounce rates.
 ✔️ Recommendation 2  
 ✔️ Recommendation 3
