@@ -10,7 +10,7 @@
 # 📊 Project Title: E-commerce Behavioral & Performance Analysis (SQL in BigQuery)
 Author: Nguyễn Văn Trí   
 Date: 2024-10-14   
-Tools Used: SQL  
+
 
 ---
 
