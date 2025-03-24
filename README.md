@@ -33,7 +33,7 @@ This project queries and analyzes user interactions, shopping patterns, and prod
   
 ### 👤 Who is this project for?  
 ✔️ Data Analysts & Business Analysts  
-✔️ Decision-makers & Stakeholders  
+✔️ Decision Makers & Stakeholders  
 
 
 
