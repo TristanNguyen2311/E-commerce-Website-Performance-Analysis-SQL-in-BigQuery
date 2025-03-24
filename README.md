@@ -25,7 +25,7 @@ Date: 2024-10-14
 
 ### Objective:
 ### 📖 What is this project about? What Business Question will it solve?
-This project uses SQL to query and analyze user interactions, shopping patterns, and product performance to:   
+This project queries and analyzes user interactions, shopping patterns, and product performance to:   
 ✔️ Identify customer behavior  
 ✔️ Enhance user experience  
 ✔️ Improve conversion rates  
