@@ -64,8 +64,8 @@ SELECT
   ,SUM(totals.transactions) as transactions
 FROM `bigquery-public-data.google_analytics_sample.ga_sessions_2017*`
 WHERE _table_suffix BETWEEN "0101" AND '0331'
-GROUP BY 1
-ORDER BY 1
+GROUP BY month
+ORDER BY month
 ```
 
 Query Result:
