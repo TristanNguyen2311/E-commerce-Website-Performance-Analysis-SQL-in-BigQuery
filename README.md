@@ -361,8 +361,11 @@ Query Result:
 ## 🔎 Final Conclusion & Recommendations  
 
 👉🏻 Based on the insights and findings above, we would recommend the stakeholder team to consider the following:  
-
+✔️ Visits were stable in Q1 2017, while transactions rose and improved the conversion rate from 1.10% to 1.42%.
+✔️ Google has a high number of visits but also a very high bounce rate, while YouTube had the worst engagement (66.73% bounce rate). Reddit had the lowest (28.57%), showing better content relevance.
+✔️
+✔️
 📌 Key Takeaways:  
 ✔️ Conduct surveys or phone calls to understand customers better in order to improve the landing page.  
-✔️ Simplify navigation and optimize payment process to increase the number of buyers.  
+✔️ Simplify navigation and optimize the payment process to increase the number of buyers.  
 ✔️ Create attractive banners and promotional vouchers for products, coupled with solutions for cart abandonment to increase add-to-cart and purchase rates.  
