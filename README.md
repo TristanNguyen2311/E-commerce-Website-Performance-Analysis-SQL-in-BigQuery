@@ -360,11 +360,12 @@ Query Result:
 
 ## 🔎 Final Conclusion & Recommendations  
 
-👉🏻 Based on the insights and findings above, we would recommend the stakeholder team to consider the following:  
-✔️ Visits were stable in Q1 2017, while transactions rose and improved the conversion rate from 1.10% to 1.42%.
-✔️ Google has a high number of visits but also a very high bounce rate, while YouTube had the worst engagement (66.73% bounce rate). Reddit had the lowest (28.57%), showing better content relevance.
-✔️ Although the Average Pageviews of Purchase increased by 32% (from 94 to 124), the Average Pageviews of Non-Purchase remain high (from 94 to 124), indicating that customers are struggling to find suitable products and make purchasing decisions.
-✔️ Add-to-cart rate (28.47% → 37.29%) and purchase rate (8.31% → 12.64%) steadily improved in Q1 2017, signaling better conversion efficiency.
+👉🏻 Based on the insights and findings above, we would recommend the stakeholder team to consider the following:    
+✔️ Visits are stable in Q1 2017, while transactions rose and improved the conversion rate from 1.10% to 1.42%.   
+✔️ Google has a high number of visits but also a very high bounce rate, while YouTube had the worst engagement (66.73% bounce rate). Reddit had the lowest (28.57%), showing better content relevance.   
+✔️ Although the Average Pageviews of Purchase increased by 32% (from 94 to 124), the Average Pageviews of Non-Purchase remain high (from 94 to 124), indicating that customers are struggling to find suitable products and      make purchasing decisions.  
+✔️ Add-to-cart rate (28.47% → 37.29%) and purchase rate (8.31% → 12.64%) steadily improved in Q1 2017, signaling better conversion efficiency.   
+
 📌 Key Takeaways:  
 ✔️ Conduct surveys or phone calls to understand customers better to improve the landing page.  
 ✔️ Simplify navigation and optimize the payment process to increase the number of buyers.  
