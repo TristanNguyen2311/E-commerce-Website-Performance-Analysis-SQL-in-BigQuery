@@ -70,7 +70,7 @@ ORDER BY month
 ```
 
 Query Result:
-| Month  | Visits | Pageviews | Transactions |
+| month  | visits | pageviews | transactions |
 |--------|--------|-----------|--------------|
 | 201701 | 64,694 | 257,708   | 713          |
 | 201702 | 62,192 | 233,373   | 733          |
@@ -97,7 +97,7 @@ ORDER BY  trafficSource.source
 
 Query Result:
 
-| Source | Total Visits | Total Bounces | Bounce Rate (%) |
+| source | totals_visits| total_no_of_bounces| bounce_rate |
 |--------|-------------|--------------|---------------|
 | google | 38,400 | 19,798 | 51.56% |
 | (direct) | 19,891 | 8,606 | 43.27% |
