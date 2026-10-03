@@ -366,7 +366,7 @@ Query Result:
 ✔️ Visits grew 8.1% in Q1 2017 (64,694 → 69,931), and transactions grew even faster, improving the conversion rate from 1.10% to 1.42%.  
 ✔️ Google drives the most traffic but has a high bounce rate (51.56%); among sources shown, YouTube had the highest bounce rate (66.73%) and Reddit the lowest (28.57%) — worth validating against the full source list before finalizing.  
 ✔️ Non-purchasers viewed far more pages than purchasers (316.87–334.06 vs. 94.02–124.24), suggesting they browse extensively without converting — a possible sign of decision friction, though this could also simply reflect comparison-shopping behavior.  
-✔️ Customers who bought "YouTube Men's Vintage Henley" frequently also bought "Google Sunglasses" (20 units) — a clear, specific cross-sell opportunity.
+✔️ Customers who bought "YouTube Men's Vintage Henley" frequently also bought "Google Sunglasses" (20 units) — a clear, specific cross-sell opportunity.  
 ✔️ Add-to-cart rate (28.47% → 37.29%) and purchase rate (8.31% → 12.64%) improved steadily every month in Q1 2017.  
 
 
