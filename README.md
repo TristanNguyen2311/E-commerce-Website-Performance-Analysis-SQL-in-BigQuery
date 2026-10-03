@@ -363,13 +363,15 @@ Query Result:
 
 👉🏻 Based on the insights and findings above, we would recommend the stakeholder team to consider the following:    
 
-✔️ Visits are stable in Q1 2017, while transactions rose and improved the conversion rate from 1.10% to 1.42%.   
-✔️ Google has a high number of visits but also a very high bounce rate, while YouTube had the worst engagement (66.73% bounce rate). Reddit had the lowest (28.57%), showing better content relevance.   
-✔️ Although the Average Pageviews of Purchase increased by 32% (from 94 to 124), the Average Pageviews of Non-Purchase remain high (from 94 to 124), indicating that customers are struggling to find suitable products and      make purchasing decisions.  
-✔️ Add-to-cart rate (28.47% → 37.29%) and purchase rate (8.31% → 12.64%) steadily improved in Q1 2017, signaling better conversion efficiency.   
+✔️ Visits grew 8.1% in Q1 2017 (64,694 → 69,931), and transactions grew even faster, improving the conversion rate from 1.10% to 1.42%.  
+✔️ Google drives the most traffic but has a high bounce rate (51.56%); among sources shown, YouTube had the highest bounce rate (66.73%) and Reddit the lowest (28.57%) — worth validating against the full source list before finalizing.  
+✔️ Non-purchasers viewed far more pages than purchasers (316.87–334.06 vs. 94.02–124.24), suggesting they browse extensively without converting — a possible sign of decision friction, though this could also simply reflect comparison-shopping behavior.  
+✔️ Customers who bought "YouTube Men's Vintage Henley" frequently also bought "Google Sunglasses" (20 units) — a clear, specific cross-sell opportunity.
+✔️ Add-to-cart rate (28.47% → 37.29%) and purchase rate (8.31% → 12.64%) improved steadily every month in Q1 2017.  
+
 
 📌 Key Takeaways:    
 
-✔️ Conduct surveys or phone calls to understand customers better to improve the landing page.  
-✔️ Simplify navigation and optimize the payment process to increase the number of buyers.  
-✔️ Create attractive banners and promotional vouchers for products, coupled with solutions for cart abandonment to increase add-to-cart and purchase rates.  
+✔️ Bundle "Google Sunglasses" with "YouTube Men's Vintage Henley" as a specific, data-backed cross-sell offer, rather than generic promotions.   
+✔️ Investigate why YouTube-sourced traffic bounces at 66.73% (nearly 2.3x Reddit's rate) — review landing page relevance for that specific channel.   
+✔️ Simplify product discovery/navigation to address the high non-purchaser pageview count, and test this change's impact on the 1.42% conversion rate specifically.
